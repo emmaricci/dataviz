@@ -40,7 +40,12 @@
       // R Review III: Web Scraping, Maps, Animations, and More
       // Name: Emma Ricci-De Lucca
       // Date: April 25 - May 9th, 2024
-
+        
+        d3.json('./wiidnew2.json', function(error,data) {
+        if (error) {
+        throw error;
+    }
+          
 
       // setting up svg canvas
       // size in pixels of browser as it is now
@@ -53,26 +58,7 @@
           .append('svg')
           .attr('width', width)
           .attr('height', height); 
-
-        
-      //wiid_data = "./wiidnew2.csv"; // import the data (manipulated in R first)
-      console.log(wiid_data); // check the data
-
-      // make sure we are parsing data correctly for continuous variables
-      // const parseRow = (d) => {
-      //   d.year = +d.year;
-      //   d.gini_mean = +d.gini_mean; // Unary plus operator tries to make strings into numerics
-      //   return d;
-      // } ;
-
-      // asynchronous/await method to fetch the data first
-      // const main = async() => {
-      //   const data = await d3.csv(wiid_data, parseRow);
-
-        d3.json('./wiidnew2.json', function(error,data) {
-        if (error) {
-        throw error;
-    }
+          
 // mapping
       data = data.map(d => ({
         year = +d.year,
