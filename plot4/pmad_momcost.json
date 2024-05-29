@@ -1,0 +1,30 @@
+[
+  {
+    "Outcome": "Productivity losses",
+    "Cost": 4652
+  },
+  {
+    "Outcome": "Health expenditures",
+    "Cost": 2932
+  },
+  {
+    "Outcome": "Cesarean delivery",
+    "Cost": 408
+  },
+  {
+    "Outcome": "Peripartum stay",
+    "Cost": 271
+  },
+  {
+    "Outcome": "Suicide",
+    "Cost": 204
+  },
+  {
+    "Outcome": "Benefit receipt",
+    "Cost": 168
+  },
+  {
+    "Outcome": "Preeclampsia",
+    "Cost": 20
+  }
+]
