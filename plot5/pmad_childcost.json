@@ -1,0 +1,38 @@
+[
+  {
+    "Outcome": "Preterm birth",
+    "Cost": 3306
+  },
+  {
+    "Outcome": "Behavioral and developmental disorders",
+    "Cost": 1551
+  },
+  {
+    "Outcome": "Injury",
+    "Cost": 306
+  },
+  {
+    "Outcome": "Emergency Department visits",
+    "Cost": 202
+  },
+  {
+    "Outcome": "Asthma",
+    "Cost": 123
+  },
+  {
+    "Outcome": "Breastfeeding",
+    "Cost": 74
+  },
+  {
+    "Outcome": "Childhood Obesity",
+    "Cost": 31
+  },
+  {
+    "Outcome": "Suddent infant death syndrome",
+    "Cost": 11
+  },
+  {
+    "Outcome": "Well-child care visits",
+    "Cost": -101
+  }
+]
