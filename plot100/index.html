@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://d3js.org/d3.v7.min.js"> </script> 
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <title>QSS 19: HW3 Plot2</title>
+
+
+    <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    svg {
+      outline: thin dashed red;
+      background-color: white;
+    }
+    text {
+      font-size: 30px;
+      font-family: "Lato", sans-serif;
+    }
+    </style>
+
+
+  </head>
+  <body>
+    <div id="plot1"></div> 
+      <script>
+      // Advanced Data Visualization (QSS 19) Spring 2024
+      // Homework 3, Exercise 5, Problem 1 - D3 with Imported Date
+      // R Review III: Web Scraping, Maps, Animations, and More
+      // Name: Emma Ricci-De Lucca
+      // Date: April 25 - May 9th, 2024
+
+
+      // setting up svg canvas
+      // size in pixels of browser as it is now
+        const height = window.innerHeight;
+        const width = window.innerWidth;
+
+      // append svg to select body
+      // give blank canvas attributes
+      const svg =  d3.select('plot1')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height); 
+
+        
+      //wiid_data = "./wiidnew2.csv"; // import the data (manipulated in R first)
+      console.log(wiid_data); // check the data
+
+      // make sure we are parsing data correctly for continuous variables
+      // const parseRow = (d) => {
+      //   d.year = +d.year;
+      //   d.gini_mean = +d.gini_mean; // Unary plus operator tries to make strings into numerics
+      //   return d;
+      // } ;
+
+      // asynchronous/await method to fetch the data first
+      // const main = async() => {
+      //   const data = await d3.csv(wiid_data, parseRow);
+
+        d3.json('./wiidnew2.json', function(error,data) {
+        if (error) {
+        throw error;
+    }
+// mapping
+      data = data.map(d => ({
+        year = +d.year,
+        gini_mean = +d.gini_mean,
+      }));
+        console.log(data);  
+          
+      const xValue = (d) => d.year;
+      const yValue = (d) => d.gini_mean;
+
+      // set up margins for axes
+      margin = {
+        top: 120,
+        right: 150,
+        bottom: 130,
+        left: 150
+      };
+
+        // set up scale for axes
+        // d3 extent function returns array of min and max values
+        x = d3.scaleLinear()
+          .domain(d3.extent(data, xValue)) // THE DATA SPACE; the extent gives the min and max
+          .range([margin.left,width - margin.right]); // THE PIXEL SPACE which they are remapped to
+
+        y = d3.scaleLinear()
+          .domain(d3.extent(data, yValue)) // how to translate the data into visaul/weight space
+          .range([height - margin.bottom, margin.top]); // this is constructed "upside-down"
+
+        var keys = ["Caribbean", "Central America", "Northern America", "South America"]
+        var colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"]
+
+        var myColor = d3.scaleOrdinal() // categorical scale for color
+          .domain(keys)
+          .range(colorz);
+
+        const points = data.map((d) => ({
+          x: x(xValue(d)), // scales x to pixel space
+          y: y(yValue(d)),
+          country: d.country
+
+        }));
+        console.log(points)
+
+        svg.selectAll('circle')
+          .data(points)
+          .join('circle')
+          .attr('cx', d => d.x)
+          .attr('cy', d => d.y)
+          .attr('r', 5)
+          .attr('fill', d => myColor(d.country))
+          .attr('fill-opacity', '0.4')
+
+        // adjust axes
+        xlabel = "Year"
+        ylabel = "Mean Gini Scores"
+        title = "Gini scores over time in the Americas"
+
+        svg.append('g')
+          .attr('transform', `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y));
+
+        svg.append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("x", -200)
+          .attr("y", 40)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text(ylabel);
+        
+        svg.append('g')
+          .attr('transform', `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x)
+          .tickFormat(d3.format("d"))); // remove the commas in the tick labels
+        
+        svg.append("text")
+          .attr("class", "x label")
+          .attr("text-anchor", "center")
+          .attr("x", width/2)
+          .attr("y", height - 50)
+          .text(xlabel);
+
+        svg.append('g') // "g" is a grouping piece
+          .attr("text-anchor", "start")
+          .append('text') // adding text to the svg
+          .text(title) // this is the "data" for the text that we're binding
+          .attr("x", 50) // positioning horizontal
+          .attr("y", 50);
+
+        /////// ADD LEGEND (looping) /////
+        // start with where the box will go
+        const legend = svg.selectAll(".legend")
+          .data(keys)
+          .enter()
+          .append("g")
+          .attr("class", "legend")
+          .attr("transform", (d, i) => `translate(${(i*130)+(110)}, -50)`); // horizontal legend 
+
+        legend.append("circle")
+            //.attr("cx", 60)
+            //.attr("cy", function(d,i){ return 70 + i*25}) // for a vertical legend. 70 is starting point then 25 is distance between points
+            .attr("cx", -50)
+            .attr("cy", 125)
+            .attr("r", 7)
+            .style("fill", myColor)
+            //.style("fill", function(d){ return color(d)});
+
+        legend.append("text")
+            //.attr("x", 80)
+            //.attr("y", function(d,i){ return 70 + i*25}) // for a vertical legend
+            .attr("x", -38)
+            .attr("y", 125)
+            .text(d => d)
+            .attr("text-anchor", "left") // left-justified
+            .style("alignment-baseline", "middle")
+            .style("font-size", "13px")
+            .style("font-family", "Helvetica")
+
+          var totalWidth = 0;
+
+          items = svg.selectAll('g.legend')
+              .each(function() {
+                  var current = d3.select(this);
+                  current.attr('transform', `translate(${totalWidth + 110}, -50)`); // I found that adding this line will evenly space the legend items
+                  totalWidth += current.node().getBBox().width + 5;
+              });
+
+          ///// END OF THE LEGEND //////  
+
+      });
+
+        main();
+    
+  </script>
+</body>
+</html>
