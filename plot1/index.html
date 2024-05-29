@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <title>US 2023 PMAD Mortality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .tooltip {
+            position: absolute;
+            text-align: left;
+            padding: 5px;
+            font-size: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: 'Arial';
+            text-align: 'center';
+            padding: 10px;
+            width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <center>PMADs are the #1 complication of pregnancy and childbirth,</center>
+    </h1> 
+    <div id = "plot1"></div>
+    <svg width="600" height="500"></svg>
+<script>
+
+    // dimensions 
+    var margin = {top: 60, right: 60, bottom: 60, left: 60};
+    const width = 1000; // change
+    const height = 600;
+
+    // svg container
+    const svg = d3.select("#plot1")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + 100 + "," + 0 + ")");
+
+    // add text/caption
+    // svg.append("text")
+    //     .attr("x", 300)
+    //     .attr("y", 350)
+    //     .attr("font-size", "20px")
+    //     .text("affecting 1 in 7 pregnant and postpartum women");
+    var text = svg.append("text")
+    .attr("x", 240)
+    .attr("y", 350)
+    .attr("font-size", "25px")
+    .text("affecting ")
+    .attr("text-anchor", "left");
+
+    text.append("tspan")
+        .text("1 in 5")
+        .style("fill", "#A4031F")
+        .style("font-weight", "bold");
+
+    text.append("tspan")
+        .text(" pregnant and postpartum women")
+        .style("fill", "black");
+
+    // bring in images/icons
+    var imageUrl1 = "./womangrey.png";
+    var imageUrl2 = "./womanred.png";
+    var imageSize = 200;
+    var yPosit = 70;
+
+    // Append the image elements to the SVG
+    svg.append("image")
+        .attr("xlink:href", imageUrl2)
+        .attr("width", imageSize) // Set the width and height of the image
+        .attr("height", imageSize)
+        .attr("x", 200)
+        .attr("y", yPosit);
+    
+    // Repeat the image 7 times
+    for (var i = 0; i < 4; i++) {
+        svg.append("image")
+            .attr("xlink:href", imageUrl1)
+            .attr("width", imageSize) // Set the width and height of the image
+            .attr("height", imageSize)
+            .attr("x", 300 + i * 100)
+            .attr("y", yPosit);
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
