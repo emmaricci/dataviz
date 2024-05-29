@@ -1,0 +1,54 @@
+[
+  {
+    "Country": "NETH",
+    "mmr": 1.2
+  },
+  {
+    "Country": "AUS",
+    "mmr": 2
+  },
+  {
+    "Country": "JPN",
+    "mmr": 2.7
+  },
+  {
+    "Country": "GER",
+    "mmr": 3.6
+  },
+  {
+    "Country": "NOR",
+    "mmr": 3.7
+  },
+  {
+    "Country": "UK",
+    "mmr": 6.5
+  },
+  {
+    "Country": "SWE",
+    "mmr": 7
+  },
+  {
+    "Country": "SWIZ",
+    "mmr": 7
+  },
+  {
+    "Country": "FRA",
+    "mmr": 7.6
+  },
+  {
+    "Country": "CAN",
+    "mmr": 8.4
+  },
+  {
+    "Country": "KOR",
+    "mmr": 11.8
+  },
+  {
+    "Country": "NZ",
+    "mmr": 13.6
+  },
+  {
+    "Country": "US",
+    "mmr": 23.8
+  }
+]
