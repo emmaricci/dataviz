@@ -1,0 +1,167 @@
+[
+  {
+    "Year": 1998,
+    "prm": 12,
+    "Race": "All"
+  },
+  {
+    "Year": 1998,
+    "prm": 8.3,
+    "Race": "White"
+  },
+  {
+    "Year": 1998,
+    "prm": 30.5,
+    "Race": "Black"
+  },
+  {
+    "Year": 1999,
+    "prm": 13.2,
+    "Race": "All"
+  },
+  {
+    "Year": 1999,
+    "prm": 9.5,
+    "Race": "White"
+  },
+  {
+    "Year": 1999,
+    "prm": 32.2,
+    "Race": "Black"
+  },
+  {
+    "Year": 2000,
+    "prm": 14.5,
+    "Race": "All"
+  },
+  {
+    "Year": 2000,
+    "prm": 10.5,
+    "Race": "White"
+  },
+  {
+    "Year": 2000,
+    "prm": 36.8,
+    "Race": "Black"
+  },
+  {
+    "Year": 2001,
+    "prm": 14.7,
+    "Race": "All"
+  },
+  {
+    "Year": 2001,
+    "prm": 10.2,
+    "Race": "White"
+  },
+  {
+    "Year": 2001,
+    "prm": 38.1,
+    "Race": "Black"
+  },
+  {
+    "Year": 2002,
+    "prm": 14.1,
+    "Race": "All"
+  },
+  {
+    "Year": 2002,
+    "prm": 9.8,
+    "Race": "White"
+  },
+  {
+    "Year": 2002,
+    "prm": 38.9,
+    "Race": "Black"
+  },
+  {
+    "Year": 2003,
+    "prm": 16.8,
+    "Race": "All"
+  },
+  {
+    "Year": 2003,
+    "prm": 11.7,
+    "Race": "White"
+  },
+  {
+    "Year": 2003,
+    "prm": 43.5,
+    "Race": "Black"
+  },
+  {
+    "Year": 2004,
+    "prm": 15.2,
+    "Race": "All"
+  },
+  {
+    "Year": 2004,
+    "prm": 10.6,
+    "Race": "White"
+  },
+  {
+    "Year": 2004,
+    "prm": 41.4,
+    "Race": "Black"
+  },
+  {
+    "Year": 2005,
+    "prm": 15.4,
+    "Race": "All"
+  },
+  {
+    "Year": 2005,
+    "prm": 10.7,
+    "Race": "White"
+  },
+  {
+    "Year": 2005,
+    "prm": 38.7,
+    "Race": "Black"
+  },
+  {
+    "Year": 2018,
+    "prm": 14.9,
+    "Race": "White"
+  },
+  {
+    "Year": 2019,
+    "prm": 17.9,
+    "Race": "White"
+  },
+  {
+    "Year": 2020,
+    "prm": 19.1,
+    "Race": "White"
+  },
+  {
+    "Year": 2018,
+    "prm": 37.3,
+    "Race": "Black"
+  },
+  {
+    "Year": 2019,
+    "prm": 44,
+    "Race": "Black"
+  },
+  {
+    "Year": 2020,
+    "prm": 55.3,
+    "Race": "Black"
+  },
+  {
+    "Year": 2018,
+    "prm": 17.4,
+    "Race": "All"
+  },
+  {
+    "Year": 2019,
+    "prm": 20.1,
+    "Race": "All"
+  },
+  {
+    "Year": 2020,
+    "prm": 23.8,
+    "Race": "All"
+  }
+]
