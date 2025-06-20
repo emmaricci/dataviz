@@ -180,9 +180,9 @@
           .attr("y", height - 50)
           .text(xlabel);
 
-        svg.append('g') // "g" is a grouping piece
-          .attr("text-anchor", "start")
-          .append('text') // adding text to the svg
+        svg.append("text")
+          // .attr("text-anchor", "start")
+          // .append('text') // adding text to the svg
           .text(title) // this is the "data" for the text that we're binding
           .attr("x", 50) // positioning horizontal
           .attr("y", 50);
@@ -193,7 +193,8 @@
           .enter()
           .append("g")
           .attr("class", "legend")
-          .attr("transform", (d, i) => `translate(${(i*100)+(110)}, -50)`) // horizontal legend
+          // .attr("transform", (d, i) => `translate(${(i*100)+(110)}, -50)`) // horizontal legend
+          .attr("transform", (d, i) => `translate(${(i * 130) + 110}, -50)`)
           //.attr("style", "outline: thin solid red;")
 
         legend.append("circle")
