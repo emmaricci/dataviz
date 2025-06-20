@@ -109,7 +109,7 @@
 
         // now also have to define a scale for the third variable (bubble size)
         const z = d3.scaleLinear()
-          .domain(d3.extent(data, zValue))
+          .domain(d3.extent(data, d => d.position_peak))
           .range([1,30]); // I imagine this is the range of the pixel size of the bubble
 
         const keys = ["classic", "country rock", "british"]
