@@ -122,17 +122,16 @@
         const points = data.map((d) => ({
           x: x(d.year),
           y: y(d.weeks_chart),
-          z: z(position_peak), // z variable is bubble size representing peak position
+          z: z(d.position_peak), // z variable is bubble size representing peak position
           genre: d.rock_genrez
-
         }));
         console.log(points)
 
         // const circlesGroup = svg.append("g");
 
         const highlight = function (event, genre) {
-            d3.selectAll(".circle").style("opacity",0.25);
-            d3.selectAll("." + genre).style("opacity",1);
+            d3.selectAll(".circle").style("opacity", 0.25);
+            d3.selectAll("." + genre).style("opacity", 1);
         };
 
         const noHighlight = function () {
