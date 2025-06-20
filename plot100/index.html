@@ -78,26 +78,26 @@
 
         // set up scale for axes
         // d3 extent function returns array of min and max values
-        x = d3.scaleLinear()
+        const x = d3.scaleLinear()
           .domain(d3.extent(data, xValue)) // THE DATA SPACE; the extent gives the min and max
           .range([margin.left,width - margin.right]); // THE PIXEL SPACE which they are remapped to
 
-        y = d3.scaleLinear()
+        const y = d3.scaleLinear()
           .domain(d3.extent(data, yValue)) // how to translate the data into visaul/weight space
           .range([height - margin.bottom, margin.top]); // this is constructed "upside-down"
 
-        var keys = ["Caribbean", "Central America", "Northern America", "South America"]
-        var colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"]
+        const keys = ["Caribbean", "Central America", "Northern America", "South America"]
+        const colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"]
 
-        var myColor = d3.scaleOrdinal() // categorical scale for color
+        const myColor = d3.scaleOrdinal() // categorical scale for color
           .domain(keys)
           .range(colorz);
 
-        const points = data.map((d) => ({
+        const points = data.map(d => ({
           x: x(xValue(d)), // scales x to pixel space
           y: y(yValue(d)),
-          country: d.country
-
+          country: d.country,
+          region: d.region
         }));
         console.log(points)
 
@@ -184,11 +184,10 @@
                   current.attr('transform', `translate(${totalWidth + 110}, -50)`); // I found that adding this line will evenly space the legend items
                   totalWidth += current.node().getBBox().width + 5;
               });
-
         })
           ///// END OF THE LEGEND //////  
           
-      .catch(function(error) {
+        .catch(function(error) {
           console.error("Error loading JSON:", error); // ✅ CHANGED: added catch for JSON loading error
         });
     
