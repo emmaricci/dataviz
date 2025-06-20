@@ -1,14 +1,10 @@
 # Emma Ricci-De Lucca Projects
  
-This is my code for my projects for the freeCodeCamp Data Visualization Certification.
+This is my code for my projects for the Dartmouth College QSS19 & ENGG192 (Independent Study) Advanced Data Visualization Class.
 
-The projects were completed using D3.js, a JavaScript library for creating dynamic and interactive data visualizations in the browser.
+The projects were completed using R, D3.js, and a JavaScript library for creating dynamic and interactive data visualizations in the browser for the latter.
 
 I used HTML to create the baseline structure, then the charts were created using D3.js to manipulate the DOM and SVG elements to display the data. Some of the styling was also done with D3.js, then further customised with CSS. 
-
-All datasets were provided by freeCodeCamp.
-
-The projects include a bar chart, a scatterplot graph, a heat map, a choropleth map and a treemap.
 
 ## Projects
 
@@ -23,4 +19,4 @@ The projects include a bar chart, a scatterplot graph, a heat map, a choropleth 
 
 ## Portfolio
 
-You can view my portfolio [here](https://emmariccid.myportfolio.com/).
+You can view my engineering portfolio [here](https://emmariccid.myportfolio.com/).
