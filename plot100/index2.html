@@ -1,0 +1,51 @@
+d3.json('./wiidnew2.json').then(function(data) {
+
+  const height = window.innerHeight;
+  const width = window.innerWidth;
+
+  const svg = d3.select('#plot1')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  data = data.map(d => ({
+    year: +d.year,
+    gini_mean: +d.gini_mean,
+    country: d.country,
+    region: d.region // make sure this exists if used for color
+  }));
+
+  const xValue = d => d.year;
+  const yValue = d => d.gini_mean;
+
+  const margin = { top: 120, right: 150, bottom: 130, left: 150 };
+
+  const x = d3.scaleLinear()
+    .domain(d3.extent(data, xValue))
+    .range([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain(d3.extent(data, yValue))
+    .range([height - margin.bottom, margin.top]);
+
+  const keys = ["Caribbean", "Central America", "Northern America", "South America"];
+  const colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"];
+  const myColor = d3.scaleOrdinal().domain(keys).range(colorz);
+
+  const points = data.map(d => ({
+    x: x(xValue(d)),
+    y: y(yValue(d)),
+    region: d.region // assuming you color by region
+  }));
+
+  svg.selectAll('circle')
+    .data(points)
+    .join('circle')
+    .attr('cx', d => d.x)
+    .attr('cy', d => d.y)
+    .attr('r', 5)
+    .attr('fill', d => myColor(d.region))
+    .attr('fill-opacity', '0.4');
+
+  // Add axes and labels...
+});
