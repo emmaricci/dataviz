@@ -1,51 +1,158 @@
-d3.json('./wiidnew2.json').then(function(data) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <title>QSS 19: HW3 Plot2</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    svg {
+      outline: thin dashed red;
+      background-color: white;
+    }
+    text {
+      font-size: 30px;
+      font-family: "Lato", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="plot1"></div>
+  <script>
+    d3.json('./wiidnew2.json')
+      .then(function(data) {
+        const height = window.innerHeight;
+        const width = window.innerWidth;
 
-  const height = window.innerHeight;
-  const width = window.innerWidth;
+        const svg = d3.select('#plot1')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height);
 
-  const svg = d3.select('#plot1')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
+        data = data.map(d => ({
+          year: +d.year,
+          gini_mean: +d.gini_mean,
+          country: d.country,
+          region: d.region
+        }));
 
-  data = data.map(d => ({
-    year: +d.year,
-    gini_mean: +d.gini_mean,
-    country: d.country,
-    region: d.region // make sure this exists if used for color
-  }));
+        const xValue = d => d.year;
+        const yValue = d => d.gini_mean;
 
-  const xValue = d => d.year;
-  const yValue = d => d.gini_mean;
+        const margin = {
+          top: 120,
+          right: 150,
+          bottom: 130,
+          left: 150
+        };
 
-  const margin = { top: 120, right: 150, bottom: 130, left: 150 };
+        const x = d3.scaleLinear()
+          .domain(d3.extent(data, xValue))
+          .range([margin.left, width - margin.right]);
 
-  const x = d3.scaleLinear()
-    .domain(d3.extent(data, xValue))
-    .range([margin.left, width - margin.right]);
+        const y = d3.scaleLinear()
+          .domain(d3.extent(data, yValue))
+          .range([height - margin.bottom, margin.top]);
 
-  const y = d3.scaleLinear()
-    .domain(d3.extent(data, yValue))
-    .range([height - margin.bottom, margin.top]);
+        const keys = ["Caribbean", "Central America", "Northern America", "South America"];
+        const colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"];
+        const myColor = d3.scaleOrdinal().domain(keys).range(colorz);
 
-  const keys = ["Caribbean", "Central America", "Northern America", "South America"];
-  const colorz = ["#f5c351", "#24553e", "#a1d25f", "#e1e1e6"];
-  const myColor = d3.scaleOrdinal().domain(keys).range(colorz);
+        const points = data.map(d => ({
+          x: x(xValue(d)),
+          y: y(yValue(d)),
+          region: d.region
+        }));
 
-  const points = data.map(d => ({
-    x: x(xValue(d)),
-    y: y(yValue(d)),
-    region: d.region // assuming you color by region
-  }));
+        svg.selectAll('circle')
+          .data(points)
+          .join('circle')
+          .attr('cx', d => d.x)
+          .attr('cy', d => d.y)
+          .attr('r', 5)
+          .attr('fill', d => myColor(d.region))
+          .attr('fill-opacity', 0.4);
 
-  svg.selectAll('circle')
-    .data(points)
-    .join('circle')
-    .attr('cx', d => d.x)
-    .attr('cy', d => d.y)
-    .attr('r', 5)
-    .attr('fill', d => myColor(d.region))
-    .attr('fill-opacity', '0.4');
+        const xlabel = "Year";
+        const ylabel = "Mean Gini Scores";
+        const title = "Gini scores over time in the Americas";
 
-  // Add axes and labels...
-});
+        svg.append('g')
+          .attr('transform', `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y));
+
+        svg.append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("x", -200)
+          .attr("y", 40)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text(ylabel);
+
+        svg.append('g')
+          .attr('transform', `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+        svg.append("text")
+          .attr("class", "x label")
+          .attr("text-anchor", "center")
+          .attr("x", width / 2)
+          .attr("y", height - 50)
+          .text(xlabel);
+
+        svg.append('g')
+          .attr("text-anchor", "start")
+          .append('text')
+          .text(title)
+          .attr("x", 50)
+          .attr("y", 50);
+
+        // Legend
+        const legend = svg.selectAll(".legend")
+          .data(keys)
+          .enter()
+          .append("g")
+          .attr("class", "legend")
+          .attr("transform", (d, i) => `translate(${(i * 130) + 110}, -50)`);
+
+        legend.append("circle")
+          .attr("cx", -50)
+          .attr("cy", 125)
+          .attr("r", 7)
+          .style("fill", d => myColor(d));
+
+        legend.append("text")
+          .attr("x", -38)
+          .attr("y", 125)
+          .text(d => d)
+          .attr("text-anchor", "left")
+          .style("alignment-baseline", "middle")
+          .style("font-size", "13px")
+          .style("font-family", "Helvetica");
+
+        let totalWidth = 0;
+        svg.selectAll('g.legend')
+          .each(function() {
+            const current = d3.select(this);
+            current.attr('transform', `translate(${totalWidth + 110}, -50)`);
+            totalWidth += current.node().getBBox().width + 5;
+          });
+      })
+      .catch(function(error) {
+        console.error("Error loading JSON:", error);
+      });
+  </script>
+</body>
+</html>
