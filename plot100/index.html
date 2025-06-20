@@ -41,19 +41,10 @@
       // Name: Emma Ricci-De Lucca
       // Date: April 25 - May 9th, 2024
         
-    //     d3.json('./wiidnew2.json', function(error,data) {
-    //     if (error) {
-    //     throw error;
-    // }
-        d3.json('./wiidnew2.json')
-  .then(function(data) {
-    // your visualization code here
-  })
-  .catch(function(error) {
-    console.error("Data loading error:", error);
-  });
-
-          
+        d3.json('./wiidnew2.json', function(error,data) {
+        if (error) {
+        throw error;
+    }
 
       // setting up svg canvas
       // size in pixels of browser as it is now
@@ -199,7 +190,7 @@
 
       });
 
-        main();
+        // main();
     
   </script>
 </body>
