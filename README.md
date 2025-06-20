@@ -13,7 +13,7 @@ I used HTML to create the baseline structure, then the charts were created using
 3. [Heat Map](https://emmaricci.github.io/dataviz/plot5/index.html)
 4. [Choropleth Map](https://emmaricci.github.io/dataviz/plot6/index.html)
 5. [Treemap](https://emmaricci.github.io/dataviz/plot7index.html)
-6. [Plot](https://emmaricci.github.io/dataviz/plot1/index.html)
+6. [Icon Plot](https://emmaricci.github.io/dataviz/plot1/index.html)
 7. [Plot](https://emmaricci.github.io/dataviz/plot100/index.html)
 8. [Plot](https://emmaricci.github.io/dataviz/plot101/index.html)
 
