@@ -1,4 +1,4 @@
-# Emma Ricci-De Lucca Projects
+# My Data Visualization Projects
  
 This is my code for my projects for the Dartmouth College QSS19 & ENGG192 (Independent Study) Advanced Data Visualization Class.
 
