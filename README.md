@@ -8,14 +8,14 @@ I used HTML to create the baseline structure, then the charts were created using
 
 ## Projects
 
-1. [Bar Chart](https://emmaricci.github.io/dataviz/plot3/index.html)
-2. [Scatterplot Graph](https://emmaricci.github.io/dataviz/plot4/index.html)
-3. [Heat Map](https://emmaricci.github.io/dataviz/plot5/index.html)
-4. [Choropleth Map](https://emmaricci.github.io/dataviz/plot6/index.html)
-5. [Treemap](https://emmaricci.github.io/dataviz/plot7index.html)
-6. [Icon Plot](https://emmaricci.github.io/dataviz/plot1/index.html)
-7. [Plot](https://emmaricci.github.io/dataviz/plot100/index.html)
-8. [Plot](https://emmaricci.github.io/dataviz/plot101/index.html)
+1. [Pie Chart](https://emmaricci.github.io/dataviz/plot3/index.html): Cost of Untreated PMADs
+2. [Categorical Scatter Plot 1](https://emmaricci.github.io/dataviz/plot4/index.html): Maternal Costs Associated with Untreated PMADs
+3. [Categorical Scatter Plot 2](https://emmaricci.github.io/dataviz/plot5/index.html): Child Costs Associated with Untreated PMADs
+4. [Line Graph](https://emmaricci.github.io/dataviz/plot6/index.html): US Maternal Mortality 1998-2020
+5. [Bar Graph](https://emmaricci.github.io/dataviz/plot7/index.html): High-Income Country Maternal Mortality
+6. [Icon Plot](https://emmaricci.github.io/dataviz/plot1/index.html): PMAD Mortality
+7. [Plot](https://emmaricci.github.io/dataviz/plot100/index.html): 
+8. [Plot](https://emmaricci.github.io/dataviz/plot101/index.html): 
 
 ## Portfolio
 
