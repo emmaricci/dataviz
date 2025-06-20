@@ -35,6 +35,8 @@
       // Name: Emma Ricci-De Lucca
       // Date: April 25 - May 9th, 2024
 
+    d3.json('./music.json')
+      .then(function(data) {
 
      // setting up svg canvas
      //size in pixels of browser as it is now
@@ -67,14 +69,14 @@
             d3.selectAll("circle").style("opacity", 1)
           };
 
-      const music_data = "./music.csv"; // import the data
-      console.log(music_data); // check the data
+      // const music_data = "./music.csv"; // import the data
+      // console.log(music_data); // check the data
 
       // make sure we are parsing data correctly for continuous variables
       const parseRow = (d) => {
-            d.year = +d.year;
-            d.weeks_chart = +d.weeks_chart; // Unary plus operator tries to make strings into numerics
-            d.position_peak = +d.position_peak;
+            d.year : +d.year;
+            d.weeks_chart : +d.weeks_chart; // Unary plus operator tries to make strings into numerics
+            d.position_peak : +d.position_peak;
             return d;
           } ;
 
@@ -102,10 +104,10 @@
           .domain(d3.extent(data, zValue))
           .range([1,30]); // I imagine this is the range of the pixel size of the bubble
 
-        var keys = ["classic", "country rock", "british"]
-        var colorz = ["#fcba03", "#ff6970", "#8ec74f"]
+        const keys = ["classic", "country rock", "british"]
+        const colorz = ["#fcba03", "#ff6970", "#8ec74f"]
 
-        var myColor = d3.scaleOrdinal() // categorical scale for color
+        const myColor = d3.scaleOrdinal() // categorical scale for color
           .domain(keys)
           .range(colorz);
 
@@ -194,21 +196,18 @@
             .style("font-size", "13px")
             .style("font-family", "Helvetica");
 
-          var totalWidth = 0;
-
-          items = svg.selectAll('g.legend')
+          let totalWidth = 0;
+          svg.selectAll('g.legend')
               .each(function() {
                   var current = d3.select(this);
                   current.attr('transform', `translate(${totalWidth + 110}, -50)`); // I found that adding this line will evenly space the legend items
                   totalWidth += current.node().getBBox().width + 5;
               });
-
           ///// END OF THE LEGEND //////
-
-
-      };
-
-      main();
+      })
+      .catch(function(error) {
+        console.error("Data loading error:", error);
+      });
 
     </script>
 </body>
