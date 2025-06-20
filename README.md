@@ -15,7 +15,7 @@ I used HTML to create the baseline structure, then the charts were created using
 5. [Bar Graph](https://emmaricci.github.io/dataviz/plot7/index.html): High-Income Country Maternal Mortality
 6. [Icon Plot](https://emmaricci.github.io/dataviz/plot1/index.html): PMAD Mortality
 7. [Scatter Plot](https://emmaricci.github.io/dataviz/plot100/index.html): Americas Gini Scores
-8. [Plot](https://emmaricci.github.io/dataviz/plot101/index.html): 
+8. [Scatter Plot](https://emmaricci.github.io/dataviz/plot101/index.html): Rock Genre Popularity
 
 ## Portfolio
 
