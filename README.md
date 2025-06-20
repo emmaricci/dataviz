@@ -14,7 +14,7 @@ I used HTML to create the baseline structure, then the charts were created using
 4. [Line Graph](https://emmaricci.github.io/dataviz/plot6/index.html): US Maternal Mortality 1998-2020
 5. [Bar Graph](https://emmaricci.github.io/dataviz/plot7/index.html): High-Income Country Maternal Mortality
 6. [Icon Plot](https://emmaricci.github.io/dataviz/plot1/index.html): PMAD Mortality
-7. [Plot](https://emmaricci.github.io/dataviz/plot100/index.html): 
+7. [Scatter Plot](https://emmaricci.github.io/dataviz/plot100/index.html): Americas Gini Scores
 8. [Plot](https://emmaricci.github.io/dataviz/plot101/index.html): 
 
 ## Portfolio
