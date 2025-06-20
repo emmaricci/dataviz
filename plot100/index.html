@@ -61,8 +61,8 @@
           
 // mapping
       data = data.map(d => ({
-        year = +d.year,
-        gini_mean = +d.gini_mean,
+        year : +d.year,
+        gini_mean : +d.gini_mean,
       }));
         console.log(data);  
           
@@ -163,7 +163,8 @@
             .attr("cx", -50)
             .attr("cy", 125)
             .attr("r", 7)
-            .style("fill", myColor)
+            .style("fill", d => myColor(d))
+            // .style("fill", myColor)
             //.style("fill", function(d){ return color(d)});
 
         legend.append("text")
