@@ -12,7 +12,7 @@
     <script src="https://d3js.org/d3.v7.min.js"> </script> 
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
-    <title>QSS 19: HW3 Plot2</title>
+    <title>Americas Gini Scores</title>
 
 
     <style>
@@ -42,9 +42,7 @@
       // Date: April 25 - May 9th, 2024
         
         d3.json('./wiidnew2.json', function(error,data) {
-        if (error) {
-        throw error;
-    }
+          .then(function(data) {
 
       // setting up svg canvas
       // size in pixels of browser as it is now
@@ -62,6 +60,8 @@
       data = data.map(d => ({
         year : +d.year,
         gini_mean : +d.gini_mean,
+        country: d.country,
+        region: d.region
       }));
         console.log(data);  
           
@@ -69,7 +69,7 @@
       const yValue = (d) => d.gini_mean;
 
       // set up margins for axes
-      margin = {
+      const margin = {
         top: 120,
         right: 150,
         bottom: 130,
@@ -107,13 +107,13 @@
           .attr('cx', d => d.x)
           .attr('cy', d => d.y)
           .attr('r', 5)
-          .attr('fill', d => myColor(d.country))
+          .attr('fill', d => myColor(d.region))
           .attr('fill-opacity', '0.4')
 
         // adjust axes
-        xlabel = "Year"
-        ylabel = "Mean Gini Scores"
-        title = "Gini scores over time in the Americas"
+        const xlabel = "Year"
+        const ylabel = "Mean Gini Scores"
+        const title = "Gini scores over time in the Americas"
 
         svg.append('g')
           .attr('transform', `translate(${margin.left},0)`)
@@ -121,7 +121,7 @@
 
         svg.append("text")
           .attr("class", "y label")
-          .attr("text-anchor", "end")
+          .attr("text-anchor", "middle")
           .attr("x", -200)
           .attr("y", 40)
           .attr("dy", ".75em")
@@ -177,20 +177,20 @@
             .style("font-size", "13px")
             .style("font-family", "Helvetica")
 
-          var totalWidth = 0;
-
-          items = svg.selectAll('g.legend')
+          let totalWidth = 0;
+          svg.selectAll('g.legend')
               .each(function() {
                   var current = d3.select(this);
                   current.attr('transform', `translate(${totalWidth + 110}, -50)`); // I found that adding this line will evenly space the legend items
                   totalWidth += current.node().getBBox().width + 5;
               });
 
+        })
           ///// END OF THE LEGEND //////  
-
-      });
-
-        // main();
+          
+      .catch(function(error) {
+          console.error("Error loading JSON:", error); // ✅ CHANGED: added catch for JSON loading error
+        });
     
   </script>
 </body>
