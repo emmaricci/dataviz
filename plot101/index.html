@@ -140,7 +140,8 @@
 
         svg.selectAll('circle')
           .data(points)
-          .enter().append('circle')
+          // .enter().append('circle')
+          .join('circle')
           .attr('cx', d => d.x)
           .attr('cy', d => d.y)
           .attr('r', d => d.z) // vary the size of the bubble according to z variable
@@ -199,7 +200,7 @@
             .attr("cx", -50)
             .attr("cy", 125)
             .attr("r", 7)
-            .style("fill", myColor)
+            .style("fill", d => myColor(d))
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight);
 
