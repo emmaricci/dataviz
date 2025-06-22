@@ -20,7 +20,7 @@ I used HTML to create the baseline structure, then the charts were created using
 ## Projects in R
 1. [Ribbon Plot](https://emmaricci.github.io/dataviz/plot_basics/ribbon.png): Average Temperatures in Chicago
 2. [Scatter Plot](https://emmaricci.github.io/dataviz/plot_basics/scatter.png): Relationship Between Gini Score and GDP
-3. [Color Blindness Test](https://emmaricci.github.io/dataviz/plot_basics2/color blindness.png): Evaluating Plots for Color Blindness
+3. [Color Blindness Test](https://emmaricci.github.io/dataviz/plot_basics2/color_blindness.png): Evaluating Plots for Color Blindness
 4. [Rain Cloud](https://emmaricci.github.io/dataviz/plot_basics2/raincloud.png): Chicago Average Temperatures in June
 5. [Waffle Plots](https://emmaricci.github.io/dataviz/plot_basics2/waffle.png): Chicago Average Temperatures in June
 6. [Horizontal Bar Chart](https://emmaricci.github.io/dataviz/CDC_charts/horizontal_bar.png): Distribution of Maternal Deaths by Race
